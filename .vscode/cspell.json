@@ -1,0 +1,15 @@
+{
+    "version": "0.2",
+    "ignorePaths": [
+      "**/generated/**"
+    ],
+    "words": [
+      "autobind",
+      "azcore",
+      "todoql",
+      "gqlgen",
+      "graphqls",
+      "modelgen",
+      "struct"
+    ]
+}
