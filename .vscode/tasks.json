@@ -17,8 +17,31 @@
       "problemMatcher": "$func-watch",
       "isBackground": true,
       "dependsOn": [
-        "build"
+        "build",
+        "azurite"
       ]
+    },
+    {
+      "label": "azurite",
+      "type": "docker-run",
+      "dockerRun": {
+        "image": "mcr.microsoft.com/azure-storage/azurite",
+        "command": "azurite-table --location /opt/azurite --tablePort 10002",
+        "ports": [
+          {
+            "hostPort": 10002,
+            "containerPort": 10002,
+            "protocol": "tcp"
+          }
+        ],
+        "volumes": [
+          {
+            "localPath": "${workspacePath}/data",
+            "containerPath": "/opt/azurite",
+            "permissions": "rw"
+          }
+        ]
+      }
     }
   ]
 }

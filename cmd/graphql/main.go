@@ -24,7 +24,12 @@ func main() {
 		port = defaultPort
 	}
 
-	resolver, err := graphql.NewResolver(context.Background(), "TODO")
+	connectionString := os.Getenv("TODOQL_CONNECTIONSTRING")
+	if connectionString == "" {
+		log.Fatal("TODOQL_CONNECTIONSTRING not defined")
+	}
+
+	resolver, err := graphql.NewResolver(context.Background(), connectionString)
 	if err != nil {
 		log.Fatalf("failed to initialize resolver: %s", err)
 	}
